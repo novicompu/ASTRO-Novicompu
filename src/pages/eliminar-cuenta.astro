@@ -42,7 +42,11 @@ import Layout from "@/layouts/Layout.astro";
         <p>Procesamos la eliminación completa en un plazo máximo de <strong>7 días hábiles</strong>. En casos excepcionales (auditorías o requerimientos legales) podríamos extender la fase final de purga, manteniendo tu cuenta suspendida.</p>
       </div>
 
-      <form id="delete-account-form" class="mt-8 space-y-6 bg-white p-6 rounded-lg shadow-sm border border-gray-100" method="post" novalidate>
+      <form id="delete-account-form" name="eliminar-cuenta" data-netlify="true" netlify-honeypot="bot-field" class="mt-8 space-y-6 bg-white p-6 rounded-lg shadow-sm border border-gray-100" method="POST" action="/eliminar-cuenta-exito" novalidate>
+        <input type="hidden" name="form-name" value="eliminar-cuenta" />
+        <p class="hidden">
+          <label>No llenar: <input name="bot-field" /></label>
+        </p>
         <div class="space-y-1">
           <label for="email" class="block text-sm font-medium text-gray-800">Correo electrónico <span class="text-red-600">*</span></label>
           <input id="email" name="email" type="email" required placeholder="tu@correo.com" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#264193] focus:border-[#264193]" />
@@ -80,47 +84,12 @@ import Layout from "@/layouts/Layout.astro";
   </section>
 </Layout>
 
-<script>
-// Minimal client-side handler; replace fetch URL with real backend endpoint when available
-const form = document.getElementById('delete-account-form') as HTMLFormElement | null;
-const statusEl = document.getElementById('form-status');
-
-function setStatus(msg, type='info'){ 
-  if(!statusEl) return; 
-  statusEl.textContent = msg; 
-  statusEl.className = `mt-4 text-sm font-medium ${type==='error' ? 'text-red-600' : type==='success' ? 'text-green-600' : 'text-gray-600'}`;
-}
-
-if(form){
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    setStatus('Enviando solicitud...');
-
-  const formData = new FormData(form as HTMLFormElement);
-    const payload = Object.fromEntries(formData.entries());
-
-    if(!payload.email){
-      setStatus('El correo es obligatorio.', 'error');
-      return;
-    }
-
-    try {
-      // Placeholder endpoint – replace with your backend route
-      const res = await fetch('/api/eliminar-cuenta', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if(!res.ok) throw new Error('Error en la solicitud');
-
-      setStatus('Solicitud enviada. Revisaremos y te contactaremos por correo.', 'success');
-      if (form instanceof HTMLFormElement) {
-        form.reset();
-      }
-    } catch (err){
-      setStatus('No se pudo enviar. Intenta más tarde.', 'error');
-    }
-  });
-}
-</script>
+<!--
+  Netlify Forms:
+  - data-netlify="true" enables build-time parsing.
+  - form-name hidden input required.
+  - honeypot: bot-field (hidden) reduces spam.
+  - On success Netlify will redirect to /eliminar-cuenta-exito if page exists.
+  Optional: Add a success page or use data-netlify-recaptcha for ReCAPTCHA.
+  Progressive enhancement JS (e.g., fetch) can be re-added later if needed.
+-->
