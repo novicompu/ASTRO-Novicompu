@@ -3,28 +3,68 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Welcome to Astro.">
-  <header class="flex justify-center py-6"></header>
-  <section class="h-[calc(100vh-3rem)]">
-    <div
-      class="flex flex-col justify-center max-w-screen-xl p-4 mx-auto text-center min-h-[500px] md:min-h-full text-neutral-black prose lg:prose-lg"
-    >
-      <h1 class="mb-0 mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
-        RysthDesign's Astro Template
-      </h1>
-      <p class="max-w-2xl mx-auto">
-        Check out my website! This Astro Template is a base for every static
-        website. It's built with Astro, a modern static site framework, and it
-        uses Tailwind CSS for styling.
-      </p>
-      <a
-        href="http://www.rysthdesign.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mx-auto mt-2 btn btn-primary"
-      >
-        <i class="bx bx-link-external"></i>
-        Visit Websites</a
-      >
-    </div>
-  </section>
+    <!-- Hero Section Start -->
+    <section
+        class="relative pt-32 pb-32 overflow-x-hidden from-slate-500/10 bg-[url(../images/home/bg-1.png)] bg-no-repeat bg-cover"
+        id="home">
+        <div class="container">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 items-center">
+                <div class="text-sm py-20 px-10">
+                    <span
+                        class="inline-flex py-2 text-lg text-black font-medium items-center justify-center rounded-full">
+                        <i data-lucide="minus"></i> The Best Online Furniture Store</span>
+                    <h1 class="md:text-6xl/tight text-4xl text-dark tracking-normal leading-normal font-bold mb-4 mt-6">
+                        The Best Selection of <span class="text-primary"> Furniture Online </span></h1>
+                    <p class="text-base font-medium text-muted leading-7 mt-5 capitalize">Online furniture apps simplify
+                        home shopping with convenience, variety, and affordability. Browse easily, compare prices.</p>
+                    <div class="flex flex-wrap items-center justify-center gap-3 lg:justify-normal mt-9">
+                        <img src="/assets/images/store.png" class="h-14" alt="apple image">
+                        <img src="/assets/images/google.png" class="h-14" alt="google image">
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-2 sm:mt-0 sm:pt-0 relative">
+                    <img src="/assets/images/furniture.png" alt="" class="h-[600px] max-w-full mx-auto">
+
+                    <div class="absolute bottom-3/4 -end-14 2xl:end-8 hidden xl:block">
+                        <div class="flex items-center gap-2 p-2 pe-6 rounded-full bg-white shadow-2xl">
+                            <div class="rounded-full bg-primary h-9 w-9 items-center justify-center flex">
+                                <i data-lucide="codesandbox" class="h-6 w-6 text-white"></i>
+                            </div>
+                            <div class="">
+                                <h6 class="text-base font-medium text-default-900">Express Delivery Service</h6>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="absolute bottom-28 start-6 hidden xl:block">
+                        <div class="flex items-center gap-2 p-2 pe-6 rounded-full bg-white shadow-2xl">
+                            <div class="rounded-full bg-primary h-9 w-9 items-center justify-center flex">
+                                <i data-lucide="headset" class="h-6 w-6 text-white"></i>
+                            </div>
+                            <div class="">
+                                <h6 class="text-base font-medium text-default-900">24x7 Customer Support</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- Hero Section End -->
 </Layout>
+
+<script>
+// Add Lucide icons initialization for hero section
+import { createIcons, Minus, Codesandbox, Headset } from 'lucide';
+createIcons({
+  icons: {
+    Minus,
+    Codesandbox,
+    Headset,
+  }
+});
+</script>
