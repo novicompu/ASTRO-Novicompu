@@ -1,33 +1,83 @@
 ---
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
+const siteUrl = 'https://www.novicompu.com/';
+const siteName = 'Novicompu';
+const description = 'Novicompu: Tienda líder en Ecuador de electrónica y tecnología. Laptops, smartphones, audio, gaming, componentes y más. Envíos rápidos, garantía local y soporte especializado.';
+const image = siteUrl + 'assets/images/brand/novicompu.png';
+const locale = 'es_EC';
+const social = {
+  instagram: 'https://www.instagram.com/novicompu/',
+  facebook: 'https://www.facebook.com/novicompu',
+  tiktok: 'https://www.tiktok.com/@novicompu'
+};
+
+const keywords = [
+  'novicompu','tienda','ecuador','tecnologia','electrónica','laptops','smartphones','gaming','componentes','audio','computadoras','monitores','accesorios','envios ecuador'
+].join(', ');
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteName,
+  url: siteUrl,
+  logo: image,
+  sameAs: [social.instagram, social.facebook, social.tiktok],
+  contactPoint: [{ '@type':'ContactPoint', contactType:'customer support', availableLanguage:['es'], areaServed:'EC' }],
+  address: { '@type':'PostalAddress', addressCountry:'EC' }
+};
 ---
 
 <!doctype html>
-<html lang="en" data-theme="winter">
+<html lang="es-EC" data-theme="winter">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="geo.region" content="EC" />
+    <meta name="geo.position" content="-1.8312;-78.1834" />
+    <meta name="ICBM" content="-1.8312, -78.1834" />
+    <meta name="author" content="Novicompu" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={siteUrl} />
+
+    <meta property="og:locale" content={locale} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={`Logo ${siteName}`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@novicompu" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
     <title>{title}</title>
+    <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
   </head>
-  <body class="h-screen">
+  <body class="min-h-screen flex flex-col">
     <Navbar />
-    <main class="h-full">
+    <main class="flex-1">
       <slot />
     </main>
+    <Footer />
   </body>
 </html>
 <style is:global></style>
