@@ -5,8 +5,42 @@ import Layout from "@/layouts/Layout.astro";
 <Layout title="Eliminar Cuenta | Novicompu">
   <section class="pt-28 pb-20 min-h-[60vh] bg-gray-50" aria-labelledby="delete-heading">
     <div class="max-w-xl mx-auto px-5">
-      <h1 id="delete-heading" class="text-3xl font-bold text-gray-900">Solicitar eliminación de cuenta</h1>
-      <p class="mt-4 text-sm text-gray-600 leading-relaxed">Completa el formulario para enviar una solicitud de eliminación de tu cuenta. Procesaremos la solicitud y recibirás confirmación por correo. Esta acción es irreversible.</p>
+      <h1 id="delete-heading" class="text-3xl font-bold text-gray-900">Eliminar tu cuenta de Novicompu</h1>
+      <p class="mt-4 text-sm text-gray-600 leading-relaxed">Esta página oficial permite solicitar la eliminación de tu cuenta registrada en la aplicación <strong>Novicompu</strong> (desarrollador: <strong>Novicompu</strong>) publicada en Google Play. Lee atentamente el proceso, los datos que se eliminan y los que debemos conservar por obligaciones legales.</p>
+
+      <div class="mt-6 bg-white border border-gray-100 rounded-lg p-5 space-y-4 text-sm text-gray-700">
+        <h2 class="text-base font-semibold text-gray-900">Pasos para solicitar la eliminación</h2>
+        <ol class="list-decimal ms-5 space-y-2">
+          <li>Completa el formulario inferior con el <span class="font-medium">correo asociado</span> a tu cuenta (y opcionalmente tu ID si lo conoces).</li>
+          <li>Confirma la casilla de consentimiento y envía la solicitud.</li>
+          <li>Recibirás un correo automático de confirmación de recepción.</li>
+          <li>Validaremos la titularidad y procesaremos la eliminación en un máximo de <span class="font-medium">7 días hábiles</span>.</li>
+          <li>Cuando el proceso finalice, enviaremos un correo final indicando que la cuenta fue eliminada.</li>
+        </ol>
+        <p class="text-xs text-gray-500">Si falta información o necesitamos verificar identidad, podríamos solicitar documentación adicional.</p>
+      </div>
+
+      <div class="mt-6 bg-white border border-gray-100 rounded-lg p-5 space-y-4 text-sm text-gray-700">
+        <h2 class="text-base font-semibold text-gray-900">Datos que se eliminan</h2>
+        <ul class="list-disc ms-5 space-y-1">
+          <li>Datos de perfil (nombre, alias, avatar).</li>
+          <li>Credenciales asociadas (hash de contraseña, tokens de sesión activos).</li>
+          <li>Preferencias de notificaciones y configuraciones personales.</li>
+          <li>Direcciones de envío guardadas si no están vinculadas a pedidos pendientes.</li>
+        </ul>
+        <h3 class="text-sm font-semibold text-gray-900 pt-2">Datos que debemos conservar temporalmente</h3>
+        <ul class="list-disc ms-5 space-y-1">
+          <li><span class="font-medium">Historial de pedidos y facturación</span>: Conservado por obligaciones tributarias hasta 5 años (Art. normativa fiscal Ecuador).</li>
+          <li><span class="font-medium">Registros antifraude y seguridad</span>: Conservados hasta 180 días para investigación de uso indebido.</li>
+          <li><span class="font-medium">Logs de acceso</span>: Pseudonimizados y rotados en un máximo de 90 días.</li>
+        </ul>
+        <p class="text-xs text-gray-500">Los datos retenidos se aíslan, dejan de ser visibles en la app y sólo se usan para cumplimiento legal, auditorías o seguridad.</p>
+      </div>
+
+      <div class="mt-6 bg-white border border-gray-100 rounded-lg p-5 space-y-3 text-sm text-gray-700">
+        <h2 class="text-base font-semibold text-gray-900">Tiempo de procesamiento</h2>
+        <p>Procesamos la eliminación completa en un plazo máximo de <strong>7 días hábiles</strong>. En casos excepcionales (auditorías o requerimientos legales) podríamos extender la fase final de purga, manteniendo tu cuenta suspendida.</p>
+      </div>
 
       <form id="delete-account-form" class="mt-8 space-y-6 bg-white p-6 rounded-lg shadow-sm border border-gray-100" method="post" novalidate>
         <div class="space-y-1">
@@ -37,8 +71,10 @@ import Layout from "@/layouts/Layout.astro";
         <p id="form-status" class="text-sm font-medium"></p>
       </form>
 
-      <div class="mt-10 text-xs text-gray-500 leading-relaxed">
-        <p>Si no puedes acceder al correo registrado, escribe a <a href="mailto:soporte@novicompu.com" class="underline decoration-dotted hover:text-gray-700">soporte@novicompu.com</a>.</p>
+      <div class="mt-10 text-xs text-gray-500 leading-relaxed space-y-3">
+        <p>Si no puedes acceder al correo registrado, escribe a <a href="mailto:soporte@novicompu.com" class="underline decoration-dotted hover:text-gray-700">soporte@novicompu.com</a> indicando asunto: <strong>"Eliminar cuenta - sin acceso"</strong>.</p>
+        <p>Al enviar este formulario declaras que eres el titular legítimo de la cuenta y aceptas la eliminación irreversible de los datos no sujetos a retención.</p>
+        <p>Última actualización de esta política: <time datetime="2025-09-24">24 Sep 2025</time>.</p>
       </div>
     </div>
   </section>
