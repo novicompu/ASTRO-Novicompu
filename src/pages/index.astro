@@ -1,0 +1,30 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <header class="flex justify-center py-6"></header>
+  <section class="h-[calc(100vh-3rem)]">
+    <div
+      class="flex flex-col justify-center max-w-screen-xl p-4 mx-auto text-center min-h-[500px] md:min-h-full text-neutral-black prose lg:prose-lg"
+    >
+      <h1 class="mb-0 mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
+        RysthDesign's Astro Template
+      </h1>
+      <p class="max-w-2xl mx-auto">
+        Check out my website! This Astro Template is a base for every static
+        website. It's built with Astro, a modern static site framework, and it
+        uses Tailwind CSS for styling.
+      </p>
+      <a
+        href="http://www.rysthdesign.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-auto mt-2 btn btn-primary"
+      >
+        <i class="bx bx-link-external"></i>
+        Visit Websites</a
+      >
+    </div>
+  </section>
+</Layout>

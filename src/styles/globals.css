@@ -1,0 +1,53 @@
+@import url("https://fonts.cdnfonts.com/css/inter");
+
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: winter --default;
+}
+
+:root {
+  --CL-neutral-white: #f4faff;
+  --CL-neutral-black: #08090a;
+  --CL-accent-primary: #3251ff;
+  --CL-accent-secondary: #5975f5;
+}
+
+html {
+  font-family: "Inter", sans-serif;
+}
+
+/* Background Colors */
+
+.bg-accent-primary {
+  background-color: var(--CL-accent-primary);
+}
+
+.bg-accent-secondary {
+  background-color: var(--CL-accent-secondary);
+}
+
+.bg-neutral-white {
+  background-color: var(--CL-neutral-white);
+}
+
+.bg-neutral-black {
+  background-color: var(--CL-neutral-black);
+}
+
+/* Text Colors */
+
+.text-accent-primary {
+  color: var(--CL-accent-primary);
+}
+
+.text-accent-secondary {
+  color: var(--CL-accent-secondary);
+}
+
+.text-neutral-white {
+  color: var(--CL-neutral-white);
+}
+
+.text-neutral-black {
+  color: var(--CL-neutral-black);
+}
