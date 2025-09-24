@@ -1,142 +1,55 @@
 ---
-// Navbar component extracted from reference
+// Navbar component simplified: only logo + descargar button (no responsive menu)
 ---
 
-<nav class="fixed top-0 start-0 end-0 z-999 transition-all duration-500 py-3 lg:py-5 items-center shadow-sm lg:shadow-none [&.is-sticky]:bg-white group [&.is-sticky]:shadow-md bg-white lg:bg-transparent" id="navbar">
-    <div class="max-w-screen-xl mx-auto px-4 lg:px-6 py-1">
-        
-        <div class="flex lg:flex-nowrap flex-wrap items-center">
+<nav class="fixed top-0 start-0 end-0 z-999 transition-all duration-500 py-3 lg:py-4 items-center [&.is-sticky]:bg-white [&.is-sticky]:shadow-md bg-white" id="navbar">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-6">
+    <div class="flex items-center justify-between gap-4">
+      <a href="/" class="flex items-center" aria-label="Inicio Novicompu">
+        <img src="/src/assets/images/brand/novicompu.png" class="w-32 sm:w-36 md:w-40" alt="Novicompu Logo">
+      </a>
 
-            <a href="/" class="flex items-center">
-                <img src="/src/assets/images/brand/novicompu.png" class="w-36 md:w-40 flex" alt="Novicompu Logo">
-            </a>
-
-            <div class="lg:hidden flex items-center ms-auto px-2.5">
-                <button class="hs-collapse-toggle p-1 rounded-md hover:bg-gray-100 transition-colors duration-200" type="button" id="hs-unstyled-collapse" data-hs-collapse="#navbarCollapse" aria-label="Abrir menú">
-                    <i data-lucide="menu" class="h-6 w-6 sm:h-7 sm:w-7 text-black"></i>
-                </button>
-            </div>
-
-            <!-- Navigation removed per request -->
-            <div class="navigation hs-collapse transition-all duration-300 lg:basis-auto basis-full grow hidden items-center justify-center lg:flex mx-auto overflow-hidden mt-4 lg:mt-0 nav-light bg-white lg:bg-transparent rounded-lg lg:rounded-none shadow-lg lg:shadow-none" id="navbarCollapse">
-                <ul class="navbar-nav flex-col lg:flex-row gap-y-1 lg:gap-y-2 flex lg:items-center justify-center py-2 lg:py-0 px-2 lg:px-0" id="navbar-navlist">
-                    <!-- Empty: Links removed (Inicio, Características, Testimonios, Contacto) -->
-                </ul>
-            </div>
-
-            <div class="ms-auto shrink hidden lg:inline-flex gap-2">
-                <a href="#" class="py-2 px-4 lg:px-6 inline-flex items-center gap-2 rounded-md text-sm text-white bg-[#264193] hover:bg-[#1d325f] transition-all duration-500 font-medium">
-                    <i data-lucide="download-cloud" class="h-4 w-4 fill-white/40"></i>
-                    <span class="hidden sm:block">Descargar</span>
-                </a>
-            </div>
-        </div>
+      <a href="#" class="inline-flex items-center gap-2 rounded-md text-sm font-medium text-white bg-[#264193] hover:bg-[#1d325f] transition-colors px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#264193]">
+        <i data-lucide="download-cloud" class="h-4 w-4"></i>
+        <span>Descargar</span>
+      </a>
     </div>
+  </div>
 </nav>
 
 <script>
-// Add Lucide icons initialization
-import { createIcons, Menu, DownloadCloud, X } from 'lucide';
+import { createIcons, DownloadCloud } from 'lucide';
 
 function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const mobileMenuToggle = document.getElementById('hs-unstyled-collapse');
-    const navbarCollapse = document.getElementById('navbarCollapse');
+  const navbar = document.getElementById('navbar');
 
-    function toggleMenu() {
-        const isOpen = navbarCollapse?.classList.contains('open');
-        const menuIcon = mobileMenuToggle?.querySelector('i');
-
-        if (isOpen) {
-            navbarCollapse?.classList.remove('open');
-            if (menuIcon) menuIcon.setAttribute('data-lucide', 'menu');
-        } else {
-            navbarCollapse?.classList.add('open');
-            if (menuIcon) menuIcon.setAttribute('data-lucide', 'x');
-        }
-        createIcons({
-            icons: {
-                Menu,
-                X,
-            }
-        });
+  function handleScroll() {
+    if (navbar && window.scrollY > 50) {
+      navbar.classList.add('is-sticky');
+    } else {
+      navbar?.classList.remove('is-sticky');
     }
+  }
 
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', toggleMenu);
-    }
+  window.addEventListener('scroll', handleScroll);
 
-    function handleScroll() {
-        if (navbar && window.scrollY > 50) {
-            navbar.classList.add('is-sticky');
-        } else {
-            navbar?.classList.remove('is-sticky');
-        }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Initial icon setup
-    createIcons({
-        icons: {
-            Menu,
-            DownloadCloud,
-        }
-    });
+  createIcons({
+    icons: { DownloadCloud }
+  });
 }
 
-// Run on initial page load
-if (typeof window !== 'undefined') {
-    initNavbar();
-}
-
-// Run when Astro navigates to a new page
+if (typeof window !== 'undefined') initNavbar();
 document.addEventListener('astro:after-swap', initNavbar);
 </script>
 
 <style>
-    .navigation.open {
-        display: block !important;
-    }
-    
-    /* Mobile menu positioning and animation */
-    @media (max-width: 1023px) {
-        .navigation {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            margin: 0 1rem;
-            z-index: 50;
-            border: 1px solid #e5e7eb;
-        }
-        
-        .navigation.open {
-            animation: slideDown 0.3s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    }
-    
-    /* Improved mobile button styling */
-    .hs-collapse-toggle:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-    }
-    
-    /* Logo responsiveness */
-    @media (max-width: 640px) {
-        .navbar img {
-            max-width: 120px;
-        }
-    }
+/* Keep only minimal sticky transition behavior */
+#navbar.is-sticky {
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width:640px){
+  #navbar img { max-width:120px; }
+}
 </style>
 
