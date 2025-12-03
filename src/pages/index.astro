@@ -13,17 +13,17 @@ import Layout from "@/layouts/Layout.astro";
                 <div class="pt-4 md:pt-0">
                     <p class="inline-flex items-center gap-2 rounded-full text-xs font-medium tracking-wide text-gray-800 bg-white/80 backdrop-blur px-4 py-2 shadow-sm">
                         <i data-lucide="minus" aria-hidden="true"></i>
-                        <span>La Mejor Tienda de Electrónicos</span>
+                        <span>La Mejor Tienda de Tecnología</span>
                     </p>
                     <h1 id="hero-heading" class="md:text-5xl/tight text-4xl text-gray-900 font-bold mt-6 leading-tight">
-                        La Mejor Selección de <span class="text-[#264193]"> Electrónicos Online </span>
+                        La Mejor Selección de <span class="text-[#264193]"> Tecnología Online </span>
                     </h1>
                     <p class="text-base font-medium text-gray-600 leading-relaxed mt-6">Encuentra los mejores auriculares, monitores, cámaras de seguridad, laptops, tablets y teléfonos. Compra fácil, compara precios.</p>
                     <div class="mt-8 flex flex-col sm:flex-row flex-wrap items-center gap-4" aria-label="Botones de descarga de la aplicación">
-                        <a href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer" aria-label="Descargar en App Store" class="inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#264193]">
+                        <a href="https://apps.apple.com/ec/app/novicompu/id6754252127" target="_blank" rel="noopener noreferrer" aria-label="Descargar en App Store" class="inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#264193]">
                             <img src="/assets/images/store.png" class="h-12 md:h-14 w-auto" alt="Disponible en App Store" loading="lazy" decoding="async">
                         </a>
-                        <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play" class="inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#264193]">
+                        <a href="https://play.google.com/store/apps/details?id=com.novicompu.novicompu" target="_blank" rel="noopener noreferrer" aria-label="Descargar en Google Play" class="inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#264193]">
                             <img src="/assets/images/google.png" class="h-12 md:h-14 w-auto" alt="Disponible en Google Play" loading="lazy" decoding="async">
                         </a>
                     </div>
@@ -31,16 +31,16 @@ import Layout from "@/layouts/Layout.astro";
 
                 <!-- Imagen principal -->
                 <div class="relative order-first md:order-none -mx-4 sm:mx-0">
-                    <img src="/assets/images/furniture.png" alt="Productos electrónicos destacados" class="mx-auto max-w-full h-auto max-h-[420px] md:max-h-[560px] object-contain" loading="lazy" decoding="async">
+                    <img src="/assets/images/AppScreen/homescreen.png" alt="Productos electrónicos destacados" class="mx-auto max-w-full h-auto max-h-[420px] md:max-h-[560px] object-contain" loading="lazy" decoding="async">
 
                     <!-- Badge Envío Express -->
                     <div class="absolute bottom-[72%] -end-10 2xl:end-14 hidden xl:block" aria-hidden="true">
                         <div class="flex items-center gap-2 p-2 pe-6 rounded-full bg-white shadow-2xl">
                             <div class="rounded-full bg-[#264193] h-9 w-9 items-center justify-center flex">
-                                <i data-lucide="codesandbox" class="h-6 w-6 text-white"></i>
+                                <i data-lucide="laptop" class="h-6 w-6 text-white"></i>
                             </div>
                             <div>
-                                <h6 class="text-base font-medium text-default-900">Envío Express</h6>
+                                <h6 class="text-base font-medium text-default-900">Lo último en tecnología</h6>
                             </div>
                         </div>
                     </div>
@@ -49,10 +49,10 @@ import Layout from "@/layouts/Layout.astro";
                     <div class="absolute bottom-24 start-10 hidden xl:block" aria-hidden="true">
                         <div class="flex items-center gap-2 p-2 pe-6 rounded-full bg-white shadow-2xl">
                             <div class="rounded-full bg-[#264193] h-9 w-9 items-center justify-center flex">
-                                <i data-lucide="headset" class="h-6 w-6 text-white"></i>
+                                <i data-lucide="shopping-cart" class="h-6 w-6 text-white"></i>
                             </div>
                             <div>
-                                <h6 class="text-base font-medium text-default-900">Soporte 24/7</h6>
+                                <h6 class="text-base font-medium text-default-900">Compra ahora</h6>
                             </div>
                         </div>
                     </div>
@@ -65,12 +65,13 @@ import Layout from "@/layouts/Layout.astro";
 
 <script>
 // Add Lucide icons initialization for hero section
-import { createIcons, Minus, Codesandbox, Headset } from 'lucide';
+import { createIcons, Minus, Laptop, Codesandbox, ShoppingCart } from 'lucide';
 createIcons({
   icons: {
     Minus,
+    Laptop,
     Codesandbox,
-    Headset,
+    ShoppingCart,
   }
 });
 </script>
